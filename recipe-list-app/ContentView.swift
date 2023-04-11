@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var array = ["Element 1", "Element 2", "Element 3", "Element 4", "Element 5"]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        NavigationView {
+            
+            List(array, id: \.self) { arrayElement in
+                
+                NavigationLink(destination: Text("Destination"),
+                               label: {
+                                   Text(arrayElement)
+                })
+                
+            
+            }.navigationBarTitle(Text("My List"))
         }
-        .padding()
     }
 }
 
